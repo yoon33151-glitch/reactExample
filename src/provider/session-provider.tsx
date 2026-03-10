@@ -1,6 +1,7 @@
 import GlobalLoader from "@/components/ui/global-loader";
+import { useProfileData } from "@/hooks/mutations/use-profile-data";
 import supabase from "@/lib/supabase";
-import { useIsSessionLoad, useSetSession } from "@/store/session";
+import { useIsSessionLoad, useSession, useSetSession } from "@/store/session";
 import { useEffect, type ReactNode } from "react";
 
 export default function SessionProvider({
@@ -8,6 +9,9 @@ export default function SessionProvider({
 }:{
     children: ReactNode;
 }) {
+    const session = useSession();
+    const {data: profileData, isLoading: isProfileDataLoading} = useProfileData(session?.user.id || "");
+
     const isSessionLoaded = useIsSessionLoad();
       const setSession = useSetSession();
       useEffect(()=>{
@@ -18,5 +22,6 @@ export default function SessionProvider({
       },[])
       
       if(!isSessionLoaded) return <GlobalLoader/>
+      if(isProfileDataLoading) return <GlobalLoader/>
       return children
 }

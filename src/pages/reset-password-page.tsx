@@ -3,9 +3,11 @@ import { Input } from "@/components/ui/input";
 import { useUpdatePassword } from "@/hooks/mutations/use-update-password";
 import { generateErrorMessage } from "@/lib/error";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 import { toast } from "sonner";
 
 export default function ResetPasswordPage() {
+    const navigate = useNavigate()
     const [password, setPassword] = useState("");
     const { mutate: resetPassword, isPending: isResettingPasswordPending } = useUpdatePassword({
             onError:(error) =>{
@@ -14,11 +16,13 @@ export default function ResetPasswordPage() {
                 toast.error(message, {
                     position:"top-center"
                 })
+                setPassword("")
             },
             onSuccess:() =>{
                 toast.success("비밀번호가 성공적으로 변경되었습니다.", {
                     position:"top-center"
                 })
+                navigate("/");
             }
 
     })
