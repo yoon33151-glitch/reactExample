@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useRequestPassword } from "@/hooks/use-request-password";
+import { useRequestPassword } from "@/hooks/mutations/auth/use-request-password";
 import { generateErrorMessage } from "@/lib/error";
 import { useState } from "react";
 import { toast } from "sonner";

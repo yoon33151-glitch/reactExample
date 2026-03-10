@@ -2,8 +2,8 @@ import {Input} from "@/components/ui/input"
 import {Button} from "@/components/ui/button"
 import {Link} from "react-router"
 import {useState} from "react"
-import {useSignInWithPassword } from "@/hooks/mutations/use-sign-in-with-password";
-import {useSignInWithoauth} from "@/hooks/mutations/use-sign-in-with-oauth";
+import {useSignInWithPassword } from "@/hooks/mutations/auth/use-sign-in-with-password";
+import {useSignInWithoauth} from "@/hooks/mutations/auth/use-sign-in-with-oauth";
 import githubLogo from "@/assets/github-mark.svg"
 import { toast } from "sonner";
 import { generateErrorMessage } from "@/lib/error";

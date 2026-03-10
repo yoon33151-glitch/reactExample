@@ -1,5 +1,5 @@
 import GlobalLoader from "@/components/ui/global-loader";
-import { useProfileData } from "@/hooks/mutations/use-profile-data";
+import { useProfileData } from "@/hooks/mutations/auth/use-profile-data";
 import supabase from "@/lib/supabase";
 import { useIsSessionLoad, useSession, useSetSession } from "@/store/session";
 import { useEffect, type ReactNode } from "react";
